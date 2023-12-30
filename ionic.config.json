@@ -1,0 +1,7 @@
+{
+  "name": "rest-food",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
