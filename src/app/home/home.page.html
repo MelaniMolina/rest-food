@@ -1,20 +1,120 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
     <ion-title>
-      Blank
+      Comidas Favoritas
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div style="text-align: end; margin: 10px;">  
+    <ion-button (click)="nuevo()"  class="normal custom-color"> Nuevo</ion-button>
   </div>
+
+  <div *ngIf="enableNewComida">
+
+    <ion-item>
+      <ion-buttons slot="end">
+        <ion-button (click)="enableNewComida = false">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+        <ion-button (click)="guardarComida() ">
+          <ion-icon  slot="icon-only" name="save-sharp"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+
+
+    <h3 class="subtitulo encabezado">Ingrese Datos del Resturante</h3>
+    <ion-item>
+      <ion-label class="normal" position="floating">
+        Nombre del Restaurante:
+      </ion-label>
+      <ion-input [(ngModel)]="newComida.nombre_pla" class="normal" type="text" inputmode="text">
+      </ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label class="normal" position="floating">
+        Precio del Plato:
+      </ion-label>
+      <ion-input [(ngModel)]="newComida.precio_pla" class="normal" type="numeric" inputmode="numeric">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="normal" position="floating">
+        Descripcion del Plato:
+      </ion-label>
+      <ion-input [(ngModel)]="newComida.descrp_pla" class="normal" type="text" inputmode="text">
+      </ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label class="normal" position="floating">
+        Ubicacion del Restaurante:
+      </ion-label>
+      <ion-input [(ngModel)]="newComida.ubicacion" class="normal" type="text" inputmode="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="normal">
+        Foto:
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button>
+          <label for="file-upload">
+            <ion-icon slot="icon-only" name="images"></ion-icon>
+          </label>
+          <input (change)="newImageUpload($event)" id="file-upload" style="display: none" type="file" accept="image/*">
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+    <ion-item>
+      <img class="image" [src]="newComida.foto">
+    </ion-item>
+
+
+    <ion-button style="margin: 30px;" expand="full" color="dark" (click)="guardarComida">
+      Guardar
+    </ion-button>
+  </div>
+
+
+
+  <h3 class="subtitulo encabezado">Lista Platos y Resturantes</h3>
+
+
+  <ion-item *ngFor="let comida of comidas">
+    <ion-label class="normal"> {{comida.nombre_pla}}</ion-label>
+    <ion-buttons slot="end">
+      <ion-button (click)="newComida = comidas[0]; enableNewComida = true;">
+        <ion-icon slot="icon-only" name="create-sharp"></ion-icon>
+      </ion-button>
+      <ion-button (click)="deleteComida(comidas[0])">
+        <ion-icon slot="icon-only" color="danger" name="trash-bin"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+
+
+
+
+
+
+
 </ion-content>
+
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title> Comidas Favoritas </ion-title>
+  </ion-toolbar>
+</ion-footer>
