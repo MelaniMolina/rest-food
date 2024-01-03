@@ -110,10 +110,12 @@ export class HomePage {
       const reader = new FileReader();
       reader.onload = ((image) => {
         this.newComida.foto = image.target?.result as string;
+        console.log('URL de la imagen:', this.newComida.foto);
       });
       reader.readAsDataURL(event.target.files[0]);
     }
   }
+  
 // Configurar el modo de agregar una nueva comida
   nuevo() {
     this.enableNewComida = true;

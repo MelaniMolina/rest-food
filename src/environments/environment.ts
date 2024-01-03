@@ -4,14 +4,14 @@
 
 export const environment = {
   production: false,
-  firebaseConfig : {
-    apiKey: "AIzaSyCzDT-Q8TfQ3ppboff-WB4TKpDbIiSMthU",
-    authDomain: "food-service-e80b8.firebaseapp.com",
-    projectId: "food-service-e80b8",
-    storageBucket: "food-service-e80b8.appspot.com",
-    messagingSenderId: "454781567579",
-    appId: "1:454781567579:web:5366ebfa24fe2a2c68f57e",
-    measurementId: "G-7RTT5KYLEF"
+  firebaseConfig: {
+    apiKey: "AIzaSyBlSX6swTCQ-4G_3ca3Jy7WKwXHiY6ScuQ",
+    authDomain: "huecascomida.firebaseapp.com",
+    projectId: "huecascomida",
+    storageBucket: "huecascomida.appspot.com",
+    messagingSenderId: "471323262469",
+    appId: "1:471323262469:web:08f49b071131c60765266c",
+    measurementId: "G-9FYRFP31M9"
   }
 };
 /*

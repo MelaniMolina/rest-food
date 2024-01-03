@@ -77,20 +77,13 @@
       </ion-buttons>
     </ion-item>
     <ion-item>
-      <img class="image" [src]="newComida.foto">
+      <img class="image" [src]="newComida.foto" *ngIf="newComida.foto">
     </ion-item>
 
-
-    <ion-button style="margin: 30px;" expand="full" color="dark" (click)="guardarComida">
-      Guardar
-    </ion-button>
   </div>
 
 
-
-  <h3 class="subtitulo encabezado">Lista Platos y Resturantes</h3>
-
-
+ <h3 class="subtitulo encabezado">Lista Platos y Resturantes</h3>
   <ion-item *ngFor="let comida of comidas">
     <ion-label class="normal"> {{comida.nombre_pla}}</ion-label>
     <ion-buttons slot="end">
