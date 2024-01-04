@@ -8,3 +8,15 @@ export interface Comida {
     id: string;
     fecha: Date;
 }
+
+export interface IGenericAddress {
+    casa?: string;
+    codigo_postal?: string;
+    calle?: string;
+    region?: string;
+    ciudad?: string;
+    Pais?: string
+    lat?: number;
+    lng?: number;
+    direccion_formateda?: string;
+}

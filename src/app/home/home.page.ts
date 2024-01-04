@@ -27,7 +27,7 @@ export class HomePage {
     private loadingController: LoadingController,
     private toastController: ToastController,
     private alertController: AlertController,
-
+   
 
   ) {
     // Inicialización del objeto nueva comida con valores predeterminados
@@ -41,18 +41,21 @@ export class HomePage {
       fecha: new Date(),
     };
   }
+
+
+  
   // Método llamado cuando se inicializa el componente
   ngOnInit() {
     this.getComidas();
   }
-  
+
   // Obtener la colección de comidas desde Firestore
   getComidas() {
     this.firestoreService.getCollection<Comida>(this.path).subscribe(res => {
       this.comidas = res;
     });
   }
- // Guardar una nueva comida en Firestore y cargar la imagen si está presente
+  // Guardar una nueva comida en Firestore y cargar la imagen si está presente
   async guardarComida() {
     this.presentLoading();
     const path = 'Comida';
@@ -69,14 +72,16 @@ export class HomePage {
     });
   }
 
+  
 
- // Eliminar una comida mostrando un mensaje de advertencia
+
+  // Eliminar una comida mostrando un mensaje de advertencia
   async deleteComida(comida: Comida) {
 
     const alert = await this.alertController.create({
       cssClass: 'normal',
       header: 'Advertencia',
-      message: ' Seguro desea <strong>Eliminar</strong> esta opcion',
+      message: ' Seguro desea Eliminar esta opcion',
       buttons: [
         {
           text: 'cancelar',
@@ -102,7 +107,7 @@ export class HomePage {
     });
     await alert.present();
   }
-// Manejar la carga de una nueva imagen
+  // Manejar la carga de una nueva imagen
   async newImageUpload(event: any) {
 
     if (event.target.files && event.target.files[0]) {
@@ -115,8 +120,8 @@ export class HomePage {
       reader.readAsDataURL(event.target.files[0]);
     }
   }
-  
-// Configurar el modo de agregar una nueva comida
+
+  // Configurar el modo de agregar una nueva comida
   nuevo() {
     this.enableNewComida = true;
     this.newComida = {
@@ -129,7 +134,7 @@ export class HomePage {
       fecha: new Date()
     };
   }
-// Presentar un indicador de carga
+  // Presentar un indicador de carga
   async presentLoading() {
     this.loading = await this.loadingController.create({
       cssClass: 'normal',

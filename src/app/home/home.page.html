@@ -56,12 +56,14 @@
 
 
     <ion-item>
-      <ion-label class="normal" position="floating">
+      <ion-label class="normal" position="floating"  >
         Ubicacion del Restaurante:
       </ion-label>
       <ion-input [(ngModel)]="newComida.ubicacion" class="normal" type="text" inputmode="text">
       </ion-input>
     </ion-item>
+
+    <ion-button routerLink="/google-maps">Ir a Google Maps</ion-button>
 
     <ion-item>
       <ion-label class="normal">

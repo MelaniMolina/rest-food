@@ -10,9 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
 import { environment } from '../environments/environment';
-
+import { GoogleMapsPageModule } from 'src/app/google-maps/google-maps.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule,
@@ -20,6 +19,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
+    GoogleMapsPageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
