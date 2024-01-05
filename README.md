@@ -5,6 +5,10 @@ la introducción de datos personales, así como la gestión de información sobr
 Además, incorpora funcionalidades avanzadas para la manipulación eficiente, 
 almacenamiento y modificación de cualquier tipo de información asociada a restaurantes y "huecas" (establecimientos de comida típica).
 
+## Integrantes:
+- Melani Molina
+- Franklin Patiño
+  
 ## Detalles de la implementación:
 Ionic:Utiliza tecnologías web estándar como HTML, CSS y JavaScript para crear aplicaciones multiplataforma con una única base de código.
 Cordova:Cordova proporciona un conjunto de APIs que permiten a las aplicaciones acceder a características nativas del dispositivo, como la cámara o el GPS, a través de JavaScript.
