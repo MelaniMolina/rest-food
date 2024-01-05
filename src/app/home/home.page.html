@@ -61,9 +61,9 @@
       </ion-label>
       <ion-input [(ngModel)]="newComida.ubicacion" class="normal" type="text" inputmode="text">
       </ion-input>
+      <ion-button expand="block" (click)="openModal()">Ir a Google Maps</ion-button>
     </ion-item>
 
-    <ion-button routerLink="/google-maps">Ir a Google Maps</ion-button>
 
     <ion-item>
       <ion-label class="normal">
@@ -89,19 +89,19 @@
   <ion-item *ngFor="let comida of comidas">
     <ion-label class="normal"> {{comida.nombre_pla}}</ion-label>
     <ion-buttons slot="end">
-      <ion-button (click)="newComida = comidas[0]; enableNewComida = true;">
+      <ion-button (click)="verComida(comida)">
+        <ion-icon slot="icon-only" name="eye"></ion-icon>
+      </ion-button>
+      <ion-button (click)="newComida = comida; enableNewComida = true;">
         <ion-icon slot="icon-only" name="create-sharp"></ion-icon>
       </ion-button>
-      <ion-button (click)="deleteComida(comidas[0])">
+      <ion-button (click)="deleteComida(comida)">
         <ion-icon slot="icon-only" color="danger" name="trash-bin"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-item>
 
-
-
-
-
+  
 
 
 </ion-content>

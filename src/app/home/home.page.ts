@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { LoadingController, ToastController, AlertController } from '@ionic/angular';
+import { LoadingController, ToastController, AlertController, ModalController } from '@ionic/angular';
 import { Comida } from 'src/app/models';
 import { FirestorageService } from 'src/app/services/firestorage.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { GoogleMapsPage } from '../google-maps/google-maps.page';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +28,7 @@ export class HomePage {
     private loadingController: LoadingController,
     private toastController: ToastController,
     private alertController: AlertController,
+    private modalCtrl: ModalController,
    
 
   ) {
@@ -42,8 +44,18 @@ export class HomePage {
     };
   }
 
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: GoogleMapsPage,
+      cssClass: 'google-maps.page.scss'
+    });
+    modal.present();
+    const { data, role } = await modal.onWillDismiss();
+    if(role === 'aceptar'){
+      this.newComida.ubicacion = data;
+    }
+  }
 
-  
   // Método llamado cuando se inicializa el componente
   ngOnInit() {
     this.getComidas();
@@ -55,6 +67,7 @@ export class HomePage {
       this.comidas = res;
     });
   }
+  
   // Guardar una nueva comida en Firestore y cargar la imagen si está presente
   async guardarComida() {
     this.presentLoading();
@@ -107,6 +120,27 @@ export class HomePage {
     });
     await alert.present();
   }
+
+  async verComida(comida: Comida) {
+    try {
+      const alert = await this.alertController.create({
+        cssClass: 'normal',
+        header: 'Comida',
+        message: '<strong>Nombre:</strong> ' + comida.nombre_pla + '<br>' +
+          '<strong>Precio:</strong> ' + comida.precio_pla + '<br>' +
+          '<strong>Descripcion:</strong> ' + comida.descrp_pla + '<br>' +
+          '<strong>Ubicacion:</strong> ' + comida.ubicacion + '<br>' +
+          '<strong>Fecha:</strong> ' + comida.fecha + '<br>' +
+          '<strong>Foto:</strong> <br><img src="' + comida.foto + '" width="300px">',
+        buttons: ['OK']
+      });
+  
+      await alert.present();
+    } catch (error) {
+      console.log('error -> ', error);
+    }
+  }
+
   // Manejar la carga de una nueva imagen
   async newImageUpload(event: any) {
 

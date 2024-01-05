@@ -3,11 +3,12 @@ import { DOCUMENT } from '@angular/common';
 import { Input, Renderer2, ElementRef, ViewChild, Inject } from '@angular/core';
 import { GoogleMapsService } from './google-maps.service';
 import { ModalController } from '@ionic/angular';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 declare var google: any;
-declare var Geolocation: {
-  getCurrentPosition: any; // o el tipo correcto según tu aplicación
-};
+// declare var Geolocation: {
+//   getCurrentPosition: any; // o el tipo correcto según tu aplicación
+// };
 
 @Component({
   selector: 'app-google-maps',
@@ -16,6 +17,7 @@ declare var Geolocation: {
 })
 
 export class GoogleMapsPage implements OnInit {
+
 
   @Input() position = {
     lat: -2.898116,
@@ -39,7 +41,9 @@ export class GoogleMapsPage implements OnInit {
     @Inject(DOCUMENT) private document: any,
     private renderer: Renderer2,
     private googlemapsService: GoogleMapsService,
-    public modalController: ModalController) { }
+    public modalController: ModalController,
+    private geolocation: Geolocation
+    ) { }
 
   ngOnInit(): void {
     this.init();
@@ -122,29 +126,24 @@ export class GoogleMapsPage implements OnInit {
   }
 
   async mylocation() {
-
-    console.log('mylocation() click')
- 
-
-    Geolocation['getCurrentPosition']().then((res:any) => {
-
-      console.log('mylocation() -> get ', res);
-
-      const position = {
-        lat: res.coords.latitude,
-        lng: res.coords.longitude,
-      }
-      this.addMarker(position);
-
-    });
-
+    const position = await this.geolocation.getCurrentPosition();
+    console.log('position -> ', position);
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    this.addMarker({ lat, lng });
   }
 
   aceptar() {
-    console.log('click aceptar -> ', this.positionSet);
-    this.modalController.dismiss({ pos: this.positionSet })
+    try {
+      console.log('click aceptar -> ', this.positionSet);
+      this.modalController.dismiss(this.positionSet, 'aceptar');
+    } catch (error) {
+      console.log('error -> ', error);
+    }
   }
-
+  cancelar() {
+    this.modalController.dismiss(null, 'cancelar');
+  }
 
 
 

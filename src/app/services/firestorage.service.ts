@@ -16,8 +16,13 @@ import { finalize } from 'rxjs/operators';
             const filePath = path + '/' + nombre;
             const ref = this.storage.ref(filePath);
             const task = ref.put(file);
-            resolve('este es el enlace')
-         
+            task.snapshotChanges().pipe(
+                finalize(() => {
+                    ref.getDownloadURL().subscribe((url) => {
+                        resolve(url);
+                    });
+                })
+            ).subscribe();
         });
     }
    

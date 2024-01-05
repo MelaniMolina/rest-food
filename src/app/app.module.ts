@@ -12,6 +12,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 import { GoogleMapsPageModule } from 'src/app/google-maps/google-maps.module';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule,
@@ -22,7 +23,7 @@ import { GoogleMapsPageModule } from 'src/app/google-maps/google-maps.module';
     GoogleMapsPageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [Geolocation, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
