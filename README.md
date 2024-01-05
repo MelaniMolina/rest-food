@@ -19,6 +19,7 @@ Ionic:
 - npm i g @capacitor/camera @capacitor/filesystem @capacitor/preferences
 - npm i @angular/fire firebase@9.16.0 --legacy-peer-deep
 - npm i @ionic-native/core --legacy-peer-deps
+  
 Cordova:
 -npm i -g cordova --legacy-peer-deps
 - npm i cordova-plugin-geolocation --legacy-peer-deps
