@@ -31,6 +31,10 @@ Firebase:
 - firebase init
 - mkdir hosting 
 - firebase deploy
+
+##Link Hosting Firebase
+[firebase](https://huecascomida.web.app)
+
 ## Ilustracion de la aplicacion (Login y Registro):
 
 ![image](https://github.com/MelaniMolina/rest-food/assets/113868310/2a9fd7ae-f259-4cec-9420-e0e6f15d36e4)
