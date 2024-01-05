@@ -5,17 +5,22 @@
     <ion-title>
       Comidas Favoritas
     </ion-title>
-      <ion-button (click)="logout()">
-        Cerrar Sesión
-      </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
 
-  <div style="text-align: end; margin: 10px;">  
-    <ion-button (click)="nuevo()"  class="normal custom-color"> Nuevo</ion-button>
+  <div style="text-align: end; margin: 10px;">
+    <ion-button (click)="nuevo()" class="normal custom-color"> Nuevo</ion-button>
   </div>
+  <div style="text-align: end; margin: 10px;">
+    <ion-button class="normal custom-color" (click)="logout()">
+      Cerrar Sesión
+    </ion-button>
+  </div>
+
+
+
 
   <div *ngIf="enableNewComida">
 
@@ -25,7 +30,7 @@
           <ion-icon slot="icon-only" name="close"></ion-icon>
         </ion-button>
         <ion-button (click)="guardarComida() ">
-          <ion-icon  slot="icon-only" name="save-sharp"></ion-icon>
+          <ion-icon slot="icon-only" name="save-sharp"></ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-item>
@@ -59,7 +64,7 @@
 
 
     <ion-item>
-      <ion-label class="normal" position="floating"  >
+      <ion-label class="normal" position="floating">
         Ubicacion del Restaurante:
       </ion-label>
       <ion-input [(ngModel)]="newComida.ubicacion" class="normal" type="text" inputmode="text">
@@ -88,7 +93,7 @@
   </div>
 
 
- <h3 class="subtitulo encabezado">Lista Platos y Resturantes</h3>
+  <h3 class="subtitulo encabezado">Lista Platos y Resturantes</h3>
   <ion-item *ngFor="let comida of comidas">
     <ion-label class="normal"> {{comida.nombre_pla}}</ion-label>
     <ion-buttons slot="end">
@@ -104,7 +109,7 @@
     </ion-buttons>
   </ion-item>
 
-  
+
 
 
 </ion-content>

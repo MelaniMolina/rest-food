@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Registro
@@ -6,26 +6,41 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <form  [formGroup]="credentialForm">
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="credentialForm">
     <ion-list>
       <ion-item>
         <ion-label position="floating">Correo Electrónico</ion-label>
-        <ion-input placeholder="Email address"
-        formControlName="email"
-        autofocus="true"
-        clearInput="true"></ion-input>
+        <ion-input placeholder="Email address" formControlName="email" autofocus="true" clearInput="true"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Contraseña</ion-label>
-        <ion-input placeholder="Password"
-        type="password"
-        formControlName="password"
-        clearInput="true"></ion-input>
+        <ion-input placeholder="Password" type="password" formControlName="password" clearInput="true"></ion-input>
       </ion-item>
     </ion-list>
 
-    <ion-button (click)="register()" expand="block" type="submit">Iniciar Sesión</ion-button>
+    <ion-button class="espan normal custom-color " (click)="register()" expand="block" type="submit">Iniciar
+      Sesión</ion-button>
   </form>
+  <ion-img class="espan" src="assets/imagen1.jpg" />
+
+  <p>
+    "¡BIENVENIDOS a HUECA FEST!
+    Donde la Tradición se Fusiona con la Innovación
+    . Con 1995 Años de Experiencia Culinary, cada plato cuenta la historia de nuestra
+    dedicación y pasión por la gastronomía. Descubre un viaje culinario único,
+    desde nuestros inicios en [Año de Inicio] hasta hoy. Estamos emocionados
+    de compartir contigo nuestra herencia de sabores que ha evolucionado a lo largo
+    de 80 años.
+    ¡Acompáñanos en este viaje gastronómico y celebremos juntos la excelencia en cada bocado!"
+  </p>
+
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title> Super Huecas!! </ion-title>
+  </ion-toolbar>
+</ion-footer>
