@@ -21,7 +21,7 @@ Ionic:
 - npm i @ionic-native/core --legacy-peer-deps
   
 Cordova:
--npm i -g cordova --legacy-peer-deps
+- npm i -g cordova --legacy-peer-deps
 - npm i cordova-plugin-geolocation --legacy-peer-deps
 - npm i @ionic-native/geolocation --legacy-peer-deps
 
