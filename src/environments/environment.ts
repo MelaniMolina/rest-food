@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ApiKeyGoogleMaps:'AIzLSyCzwRcOLLgw9xfAaIt11HD523Q69g62J3Z',
+  ApiKeyGoogleMaps:'AIzaSyAqso1wFkYLCMnwFiHu0_vNbAYSWLKyhII',
   firebaseConfig: {
     apiKey: "AIzaSyBlSX6swTCQ-4G_3ca3Jy7WKwXHiY6ScuQ",
     authDomain: "huecascomida.firebaseapp.com",

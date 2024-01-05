@@ -20,3 +20,10 @@ export interface IGenericAddress {
     lng?: number;
     direccion_formateda?: string;
 }
+
+export interface IGenericUser {
+    nombre?: string;
+    email?: string;
+    password?: string;
+    id?: string;
+}

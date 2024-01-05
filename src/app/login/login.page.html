@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Iniciar Sesión
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form  [formGroup]="credentialForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input placeholder="Email address"
+        formControlName="email"
+        autofocus="true"
+        clearInput="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input placeholder="Password"
+        type="password"
+        formControlName="password"
+        clearInput="true"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button (click)="login()" expand="block" type="submit">Iniciar Sesion</ion-button>
+    <ion-button expand="block" fill="clear" routerLink="/registro">Registrarse</ion-button>
+  </form>
+</ion-content>

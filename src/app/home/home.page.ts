@@ -5,6 +5,8 @@ import { Comida } from 'src/app/models';
 import { FirestorageService } from 'src/app/services/firestorage.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { GoogleMapsPage } from '../google-maps/google-maps.page';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +31,8 @@ export class HomePage {
     private toastController: ToastController,
     private alertController: AlertController,
     private modalCtrl: ModalController,
+    private authService: AuthServiceService,
+    private router: Router
    
 
   ) {
@@ -185,5 +189,16 @@ export class HomePage {
       color: 'light',
     });
     toast.present();
+  }
+
+  logout() {
+    this.authService.logout()
+      .then(() => {
+        this.router.navigateByUrl('/login'); // Redirige al usuario a la página de inicio de sesión después del cierre de sesión
+      })
+      .catch((error) => {
+        console.error('Error en el cierre de sesión:', error);
+        // Manejar errores o mostrar un mensaje al usuario si es necesario
+      });
   }
 }
